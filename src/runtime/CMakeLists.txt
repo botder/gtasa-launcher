@@ -1,6 +1,7 @@
 file(GLOB_RECURSE SOURCES LIST_DIRECTORIES false CONFIGURE_DEPENDS "*.cc" "*.h")
 add_library(gtasa_runtime SHARED ${SOURCES})
 target_compile_definitions(gtasa_runtime PRIVATE UNICODE WIN32_LEAN_AND_MEAN)
+target_link_libraries(gtasa_runtime PRIVATE detours dbghelp)
 set_target_properties(gtasa_runtime PROPERTIES PROJECT_LABEL "Runtime")
 set_target_properties(gtasa_runtime PROPERTIES OUTPUT_NAME "launcher.runtime")
 

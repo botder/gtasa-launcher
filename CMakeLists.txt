@@ -22,6 +22,9 @@ if (NOT CMAKE_ARCHIVE_OUTPUT_DIRECTORY)
     set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/stage/${CMAKE_INSTALL_LIBDIR})
 endif ()
 
+# Externally provided targets
+add_subdirectory(extern)
+
 # Main target built by this project
 add_subdirectory(src)
 set_directory_properties(PROPERTIES VS_STARTUP_PROJECT gtasa_launcher)
