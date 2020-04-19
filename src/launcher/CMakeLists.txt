@@ -1,0 +1,12 @@
+file(GLOB_RECURSE SOURCES LIST_DIRECTORIES false CONFIGURE_DEPENDS "*.cc" "*.h")
+add_executable(gtasa_launcher ${SOURCES})
+target_compile_definitions(gtasa_launcher PRIVATE UNICODE WIN32_LEAN_AND_MEAN)
+set_target_properties(gtasa_launcher PROPERTIES PROJECT_LABEL "launcher")
+set_target_properties(gtasa_launcher PROPERTIES OUTPUT_NAME "launcher")
+
+if (MSVC)
+    target_compile_options(gtasa_launcher PRIVATE /W4)
+else ()
+    target_compile_options(gtasa_launcher PRIVATE -Wall -Wextra -pedantic)
+    target_link_libraries(gtasa_launcher PRIVATE -static-libgcc -static-libstdc++ -static)
+endif ()
